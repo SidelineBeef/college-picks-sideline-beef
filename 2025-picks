@@ -1,0 +1,64 @@
+index.html
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+<!-- jQuery and DataTables JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+
+<!-- Betting Picks Table -->
+<table id="picksTable" class="display" style="width:100%">
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Spread</th>
+      <th>Total</th>
+      <th>Pick</th>
+      <th>Odds</th>
+      <th>Units</th>
+      <th>Record (Units)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Alabama @ Georgia</td>
+      <td>Alabama -7</td>
+      <td>50.5</td>
+      <td>Alabama -7</td>
+      <td>-120</td>
+      <td>2</td>
+      <td>1.67</td>
+    </tr>
+    <tr>
+      <td>Oregon @ USC</td>
+      <td>USC -3</td>
+      <td>64</td>
+      <td>OVER 64</td>
+      <td>-110</td>
+      <td>1.5</td>
+      <td>1.36</td>
+    </tr>
+    <tr>
+      <td>Michigan @ Ohio State</td>
+      <td>Michigan -2.5</td>
+      <td>47.5</td>
+      <td>Michigan -2.5</td>
+      <td>-105</td>
+      <td>2</td>
+      <td>-2.00</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Initialize DataTables -->
+<script>
+  $(document).ready(function () {
+    $('#picksTable').DataTable({
+      paging: false,        // no pagination
+      searching: false,     // disable search bar
+      info: false,          // hide "showing x of y" text
+      responsive: true,
+      order: []             // don't pre-sort
+    });
+  });
+</script>
