@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>College Football Picks</title>
 
   <!-- DataTables CSS -->
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css"/>
 
   <!-- jQuery and DataTables JS -->
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -74,7 +74,7 @@
 <body>
 
   <div style="overflow-x: auto;">
-    <table id="picksTable" class="display">
+    <table id="picksTable" class="display nowrap">
       <thead>
         <tr>
           <th>Game</th>
@@ -128,7 +128,10 @@
         scrollX: true
       });
 
-      // Apply conditional formatting
+      // Fix header alignment
+      table.columns.adjust();
+
+      // Conditional formatting
       $('#picksTable tbody tr').each(function () {
         const oddsCell = $(this).find('td').eq(4);
         const recordCell = $(this).find('td').eq(6);
