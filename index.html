@@ -55,10 +55,17 @@
       background-color: #fdeaea;
       font-weight: bold;
     }
+    @media (max-width: 600px) {
+  #picksTable th, #picksTable td {
+    font-size: 14px;
+    padding: 6px;
+  }
+}
+
   </style>
 </head>
 <body>
-
+<div style="overflow-x:auto;">
   <table id="picksTable" class="display">
     <thead>
       <tr>
@@ -84,43 +91,46 @@
       <!-- Add more rows here -->
     </tbody>
   </table>
+  </div>
 
   <!-- Optional: Make sortable without search/paging -->
   <script>
-    $(document).ready(function () {
-      $('#picksTable').DataTable({
-        paging: false,
-        searching: false,
-        info: false,
-        order: []
-      });
-
-      // Apply conditional formatting automatically
-      $('#picksTable tbody tr').each(function () {
-        const oddsCell = $(this).find('td').eq(4);
-        const recordCell = $(this).find('td').eq(6);
-
-        const oddsVal = parseFloat(oddsCell.text());
-        const recordVal = parseFloat(recordCell.text());
-
-        if (!isNaN(oddsVal)) {
-          if (oddsVal < 0) {
-            oddsCell.addClass('negative');
-          } else {
-            oddsCell.addClass('positive');
-          }
-        }
-
-        if (!isNaN(recordVal)) {
-          if (recordVal < 0) {
-            recordCell.addClass('negative');
-          } else {
-            recordCell.addClass('positive');
-          }
-        }
-      });
+  $(document).ready(function () {
+    $('#picksTable').DataTable({
+      paging: false,
+      searching: false,
+      info: false,
+      order: [],
+      scrollX: true // 👈 Enables horizontal scroll on smaller screens
     });
-  </script>
+
+    // Apply conditional formatting
+    $('#picksTable tbody tr').each(function () {
+      const oddsCell = $(this).find('td').eq(4);
+      const recordCell = $(this).find('td').eq(6);
+
+      const oddsVal = parseFloat(oddsCell.text());
+      const recordVal = parseFloat(recordCell.text());
+
+      if (!isNaN(oddsVal)) {
+        if (oddsVal < 0) {
+          oddsCell.addClass('negative');
+        } else {
+          oddsCell.addClass('positive');
+        }
+      }
+
+      if (!isNaN(recordVal)) {
+        if (recordVal < 0) {
+          recordCell.addClass('negative');
+        } else {
+          recordCell.addClass('positive');
+        }
+      }
+    });
+  });
+</script>
+
 
 </body>
 </html>
